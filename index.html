@@ -199,7 +199,7 @@
 
   const state={step:0,date:"",time:"",food:"",vibe:"",noAttempts:0};
   const foods=[["🍔","Hambúrguer"],["🍣","Sushi"],["🍝","Massas"],["🌮","Tacos"],["🍕","Pizza"],["☕","Café"]];
-  const vibes=[["🎬","Cinema"],["💿","Loja de disco"],["🎁","Surpresa"],["🌿","Ar livre"],["🏞️","Cachoeira"]];
+  const vibes=[["🍿","Cinema"],["💿","Loja de discos"],["🎤","Stand-up comedy"],["🍻","Barzinho + música ao vivo"],["💦","Cachoeira"],["🎁","Surpresa"]];
   const totalSteps=5;
   const screen=document.getElementById('screen');
   const progress=document.getElementById('progress');
@@ -216,9 +216,9 @@
 
     if(state.step===0){
       screen.innerHTML=`<div class="card">
-        <div class="emoji">🥺</div>
-        <h1>${CONFIG.nomeDela}, você aceitaria ir a um date comigo?</h1>
-        <p class="sub">responde com carinho… eu fiz um site inteiro pra isso 😭</p>
+        <div class="emoji">🙂</div>
+        <h1>Melissa, quero te convidar pra sair.</h1>
+        <p class="sub">topa um date comigo? 👀</p>
         <div class="yes-no">
           <button class="btn" onclick="yes()">SIM 💙</button>
           <button id="noBtn" class="btn secondary no-btn" onclick="runAway(event)">NÃO 😶</button>
@@ -259,8 +259,8 @@
 
     if(state.step===4){
       screen.innerHTML=`<div class="card">
-        <h1>QUAL É A VIBE? ✨</h1>
-        <p class="sub">escolhe a atividade ideal</p>
+        <h1>O QUE VOCÊ PREFERE? ✨</h1>
+        <p class="sub">escolhe uma dessas 👇</p>
         <div class="grid">${vibes.map(([ic,n])=>choice(ic,n,'vibe')).join('')}</div>
         <button class="btn" onclick="finish()">ISSO PARECE LEGAL 😎</button>
       </div>`;
