@@ -405,15 +405,7 @@
   }
   function runAway(event){
     event.preventDefault();event.stopPropagation();const btn=document.getElementById('noBtn');if(!btn)return;state.noAttempts++;
-    if(state.noAttempts>=4){
-      btn.classList.remove('runaway');
-      btn.removeAttribute('style');
-      btn.textContent='DEIXA EU PENSAR 😅';
-      btn.onclick=()=>toast('Justo 😌 me responde quando quiser');
-      const wrap=document.querySelector('.yes-no');
-      if(wrap && btn.parentElement!==wrap) wrap.appendChild(btn);
-      return;
-    }
+    btn.textContent='NÃO 😶';
     if(!btn.classList.contains('runaway')){const r=btn.getBoundingClientRect();document.body.appendChild(btn);btn.classList.add('runaway');btn.style.left=`${Math.round(r.left)}px`;btn.style.top=`${Math.round(r.top)}px`;btn.style.width=`${Math.round(r.width)}px`;btn.style.transform='rotate(0deg)';void btn.offsetWidth}
     randomOutsideCard(btn,true);
   }
