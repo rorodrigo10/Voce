@@ -213,8 +213,96 @@
     }
     @media (max-height:690px) and (min-width:481px){.card{min-height:280px;padding-top:20px}.emoji{font-size:60px}.choice{min-height:70px}.grid{gap:7px}}
     @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  
+    /* Reforço de compatibilidade para celulares/iPhone */
+    html{
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+    }
+    #screen{width:100%;min-width:0}
+    img,iframe,button,input{max-width:100%}
+    button,.choice{touch-action:manipulation}
+    @supports (-webkit-touch-callout:none){
+      body{min-height:-webkit-fill-available}
+      .app{min-height:-webkit-fill-available}
+    }
+    @media (max-width:600px){
+      body{width:100%;min-width:0;overflow-x:hidden}
+      .app{
+        display:block;
+        width:100%;
+        min-width:0;
+        min-height:100svh;
+        min-height:100dvh;
+        padding:
+          max(12px,env(safe-area-inset-top))
+          max(10px,env(safe-area-inset-right))
+          max(18px,env(safe-area-inset-bottom))
+          max(10px,env(safe-area-inset-left));
+      }
+      .shell{
+        width:100%;
+        max-width:430px;
+        min-width:0;
+        margin:0 auto;
+      }
+      .progress{padding-top:2px}
+      .card{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        min-height:0;
+        padding:20px 14px 17px;
+      }
+      .yes-no{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .yes-no .btn{min-width:0}
+      .fields,label,input{width:100%;min-width:0}
+      input{
+        min-height:50px;
+        font-size:16px;
+        appearance:auto;
+        -webkit-appearance:auto;
+      }
+      .grid{
+        width:100%;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+      .choice{
+        width:100%;
+        min-width:0;
+        min-height:82px;
+        padding:9px 6px;
+      }
+      .choice span:last-child{
+        max-width:100%;
+        white-space:normal;
+        overflow-wrap:anywhere;
+      }
+      .summary{width:100%;min-width:0}
+      .row{min-width:0}
+      .row strong{overflow-wrap:anywhere;word-break:break-word}
+      .celebration-gif{
+        display:block;
+        width:100%;
+        max-width:310px;
+        height:auto;
+        min-height:220px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .signature{padding-left:8px;padding-right:8px}
+    }
+    @media (max-width:360px){
+      .card{padding-left:11px;padding-right:11px}
+      .grid{gap:7px}
+      .choice{min-height:78px;font-size:11px}
+      .btn{font-size:13px;padding-left:9px;padding-right:9px}
+      .yes-no{gap:7px}
+      h1{font-size:20px}
+    }
+
   </style>
-  <!-- build: museo-visible-20260925-1555 -->
+    <!-- build: mobile-ready-20260925-1604 -->
 </head>
 <body>
 <main class="app">
