@@ -120,7 +120,8 @@
   const CONFIG={
     nomeDela:"Melissa",
     youtubeUrl:"https://www.youtube.com/watch?v=W7nmB20qJv4",
-    formspree:"" // opcional: https://formspree.io/f/SEU_ID
+    ntfyTopic:"date_NfD6Sq8sOv0jjNZ9UTGZEKasw83leepEahTS",
+    formspree:"" // opcional
   };
 
   const state={step:0,date:"",time:"",food:"",vibe:"",noAttempts:0};
@@ -228,9 +229,29 @@
 
   async function confirmDate(){
     const payload={nome:CONFIG.nomeDela,resposta:'SIM',data:formatDate(state.date),horario:state.time,comida:state.food,vibe:state.vibe};
+
+    // Envia a resposta automaticamente para um tópico privado por nome aleatório.
+    // Não expõe seu e-mail no código.
+    const notification =
+      '💙🩷 Melissa confirmou o date!\n\n' +
+      '📅 Data: ' + payload.data + '\n' +
+      '🕒 Horário: ' + payload.horario + '\n' +
+      '🍴 Comida: ' + payload.comida + '\n' +
+      '✨ Vibe: ' + payload.vibe;
+
+    try{
+      await fetch('https://ntfy.sh/' + CONFIG.ntfyTopic, {
+        method:'POST',
+        body:notification
+      });
+    }catch(e){
+      console.warn('Não foi possível enviar a notificação.', e);
+    }
+
     if(CONFIG.formspree){
       try{await fetch(CONFIG.formspree,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});}catch(e){}
     }
+
     state.step=6;render();burst();
     setTimeout(()=>{window.location.href=CONFIG.youtubeUrl;},1500);
   }
