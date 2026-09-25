@@ -222,87 +222,270 @@
     #screen{width:100%;min-width:0}
     img,iframe,button,input{max-width:100%}
     button,.choice{touch-action:manipulation}
+
     @supports (-webkit-touch-callout:none){
       body{min-height:-webkit-fill-available}
       .app{min-height:-webkit-fill-available}
     }
+
     @media (max-width:600px){
-      body{width:100%;min-width:0;overflow-x:hidden}
-      .app{
-        display:block;
+      html,body{
         width:100%;
+        max-width:100%;
+        min-width:0;
+        overflow-x:hidden;
+      }
+
+      body{
+        min-height:100svh;
+        min-height:100dvh;
+      }
+
+      .app{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        width:100%;
+        max-width:100%;
         min-width:0;
         min-height:100svh;
         min-height:100dvh;
         padding:
-          max(12px,env(safe-area-inset-top))
-          max(10px,env(safe-area-inset-right))
-          max(18px,env(safe-area-inset-bottom))
-          max(10px,env(safe-area-inset-left));
+          max(18px,env(safe-area-inset-top))
+          max(14px,env(safe-area-inset-right))
+          max(20px,env(safe-area-inset-bottom))
+          max(14px,env(safe-area-inset-left));
       }
+
       .shell{
-        width:100%;
-        max-width:430px;
+        width:min(100%,370px);
+        max-width:370px;
         min-width:0;
-        margin:0 auto;
+        margin:auto;
+        padding:4px 0;
       }
-      .progress{padding-top:2px}
+
+      .progress{
+        margin:0 0 12px;
+        padding:0;
+      }
+
       .card{
         width:100%;
         max-width:100%;
         min-width:0;
         min-height:0;
-        padding:20px 14px 17px;
+        margin:0 auto;
+        padding:22px 16px 19px;
+        border-radius:25px;
       }
-      .yes-no{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .yes-no .btn{min-width:0}
-      .fields,label,input{width:100%;min-width:0}
+
+      .card:before{
+        border-radius:25px 25px 50% 50%/25px 25px 20px 20px;
+      }
+
+      h1{
+        font-size:clamp(20px,6.6vw,24px);
+        line-height:1.13;
+        margin-bottom:8px;
+      }
+
+      .emoji{
+        font-size:56px;
+        margin-bottom:10px;
+      }
+
+      .sub{
+        max-width:290px;
+        margin-left:auto;
+        margin-right:auto;
+        font-size:13.5px;
+        line-height:1.4;
+      }
+
+      .yes-no{
+        width:100%;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:9px;
+      }
+
+      .yes-no .btn{
+        width:100%;
+        min-width:0;
+      }
+
+      .btn{
+        min-height:50px;
+        padding:13px 11px;
+        font-size:14px;
+      }
+
+      .fields{
+        width:100%;
+        min-width:0;
+        gap:10px;
+        margin:8px 0 16px;
+      }
+
+      label,input{
+        width:100%;
+        min-width:0;
+      }
+
       input{
         min-height:50px;
+        padding:12px;
         font-size:16px;
         appearance:auto;
         -webkit-appearance:auto;
       }
+
       .grid{
         width:100%;
+        min-width:0;
         grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:8px;
+        margin:8px 0 16px;
       }
+
       .choice{
         width:100%;
         min-width:0;
         min-height:82px;
         padding:9px 6px;
+        font-size:11.5px;
       }
+
       .choice span:last-child{
+        display:block;
         max-width:100%;
         white-space:normal;
         overflow-wrap:anywhere;
+        line-height:1.18;
       }
-      .summary{width:100%;min-width:0}
-      .row{min-width:0}
-      .row strong{overflow-wrap:anywhere;word-break:break-word}
+
+      .summary{
+        width:100%;
+        min-width:0;
+        padding:11px 12px;
+      }
+
+      .row{
+        min-width:0;
+        gap:8px;
+        font-size:12px;
+        align-items:flex-start;
+      }
+
+      .row span{
+        flex:0 0 auto;
+      }
+
+      .row strong{
+        max-width:62%;
+        overflow-wrap:anywhere;
+        word-break:break-word;
+      }
+
+      .final-card{
+        padding-top:19px;
+      }
+
+      .final-card h1{
+        font-size:clamp(22px,7vw,27px);
+      }
+
       .celebration-gif{
         display:block;
         width:100%;
-        max-width:310px;
+        max-width:300px;
+        min-height:0;
+        aspect-ratio:498/407;
         height:auto;
-        min-height:220px;
-        margin-left:auto;
-        margin-right:auto;
+        margin:2px auto 14px;
+        border-radius:17px;
       }
-      .signature{padding-left:8px;padding-right:8px}
-    }
-    @media (max-width:360px){
-      .card{padding-left:11px;padding-right:11px}
-      .grid{gap:7px}
-      .choice{min-height:78px;font-size:11px}
-      .btn{font-size:13px;padding-left:9px;padding-right:9px}
-      .yes-no{gap:7px}
-      h1{font-size:20px}
+
+      .signature{
+        margin-top:10px;
+        padding:
+          0 8px max(2px,env(safe-area-inset-bottom));
+        font-size:10.5px;
+        line-height:1.35;
+      }
+
+      .toast{
+        max-width:calc(100vw - 28px);
+      }
+
+      .no-btn.runaway{
+        min-width:105px;
+        max-width:calc(100vw - 28px);
+      }
     }
 
+    @media (max-width:360px){
+      .app{
+        padding-left:max(10px,env(safe-area-inset-left));
+        padding-right:max(10px,env(safe-area-inset-right));
+      }
+
+      .shell{
+        width:min(100%,340px);
+      }
+
+      .card{
+        padding:19px 12px 17px;
+      }
+
+      h1{
+        font-size:20px;
+      }
+
+      .btn{
+        padding-left:8px;
+        padding-right:8px;
+        font-size:13px;
+      }
+
+      .grid{
+        gap:7px;
+      }
+
+      .choice{
+        min-height:78px;
+        padding-left:5px;
+        padding-right:5px;
+        font-size:11px;
+      }
+
+      .choice .ic{
+        font-size:22px;
+      }
+
+      .row{
+        font-size:11.5px;
+      }
+    }
+
+    @media (max-width:600px) and (max-height:700px){
+      .app{
+        justify-content:flex-start;
+      }
+
+      .shell{
+        margin:0 auto;
+      }
+    }
+
+    @media (max-height:520px) and (orientation:landscape){
+      .app{
+        justify-content:flex-start;
+      }
+    }
   </style>
-    <!-- build: mobile-ready-20260925-1604 -->
+      <!-- build: mobile-framed-20260925-1610 -->
 </head>
 <body>
 <main class="app">
