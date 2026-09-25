@@ -123,6 +123,7 @@
     .final-card h1{font-size:28px}
     .celebration-gif{
       display:block;
+      border:0;
       width:min(100%,310px);
       aspect-ratio:498/407;
       object-fit:cover;
@@ -183,7 +184,7 @@
   <section class="shell">
     <div class="progress" id="progress"></div>
     <div id="screen"></div>
-    <div class="signature">feito especialmente pra você 💙🩷</div>
+    <div class="signature">feito especialmente para Melissa Garcia 💙🩷</div>
   </section>
   <div class="toast" id="toast"></div>
 </main>
@@ -191,14 +192,14 @@
   const CONFIG={
     nomeDela:"Melissa",
     youtubeUrl:"https://www.youtube.com/watch?v=W7nmB20qJv4",
-    celebrationGif:"https://media1.tenor.com/m/7ml7S3QPmVYAAAAd/naruto-happy.gif",
+    celebrationEmbed:"https://tenor.com/embed/16796139",
     ntfyTopic:"date_NfD6Sq8sOv0jjNZ9UTGZEKasw83leepEahTS",
     formspree:"" // opcional
   };
 
   const state={step:0,date:"",time:"",food:"",vibe:"",noAttempts:0};
   const foods=[["🍔","Hambúrguer"],["🍣","Sushi"],["🍝","Massas"],["🌮","Tacos"],["🍕","Pizza"],["☕","Café"]];
-  const vibes=[["🎳","Boliche"],["🚶","Caminhada"],["🎬","Cinema"],["🎵","Música"],["🌳","Parque"],["✨","Surpresa"]];
+  const vibes=[["🎬","Cinema"],["💿","Loja de disco"],["🎁","Surpresa"],["🌿","Ar livre"],["🏞️","Cachoeira"]];
   const totalSteps=5;
   const screen=document.getElementById('screen');
   const progress=document.getElementById('progress');
@@ -284,7 +285,7 @@
     if(state.step===6){
       screen.innerHTML=`<div class="card final-card">
         <div class="celebration-badge">🍥 MISSÃO CUMPRIDA</div>
-        <img class="celebration-gif" src="${CONFIG.celebrationGif}" alt="Naruto comemorando feliz">
+        <iframe class="celebration-gif" src="${CONFIG.celebrationEmbed}" title="Naruto apaixonado comemorando" loading="eager" allowfullscreen></iframe>
         <h1>EU SABIAAAA 😭🔥</h1>
         <p class="sub">ok... agora o date tá oficialmente confirmado kkkkk</p>
         <button class="btn" onclick="openMusic()">TEM MAIS UMA COISA 🎧</button>
